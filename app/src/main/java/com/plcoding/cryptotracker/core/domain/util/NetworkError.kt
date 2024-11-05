@@ -5,5 +5,6 @@ enum class NetworkError : Error {
     TOO_MANY_REQUEST,
     SERVER_ERROR,
     SERIALIZATION,
-    UNKNOWN
+    UNKNOWN,
+    NO_INTERNET
 }
