@@ -38,13 +38,15 @@ fun InfoCard(
     formattedText: String,
     icon: ImageVector,
     modifier: Modifier = Modifier,
-    contentColor: Color = MaterialTheme.colorScheme.onSurface,
-    formattedTextStyle: TextStyle = LocalTextStyle.current.copy(
+    contentColor: Color = MaterialTheme.colorScheme.onSurface
+) {
+
+    val defaultTextStyle = LocalTextStyle.current.copy(
         textAlign = TextAlign.Center,
         fontSize = 18.sp,
         color = contentColor
     )
-) {
+
     Card(
         modifier = modifier
             .padding(8.dp)
@@ -88,7 +90,7 @@ fun InfoCard(
         ) { formattedText ->
             Text(
                 text = formattedText,
-                style = formattedTextStyle,
+                style = defaultTextStyle,
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
             )
