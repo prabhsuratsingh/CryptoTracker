@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 @Composable
-fun <T>ObserveAsEvents(
+fun <T> ObserveAsEvents(
     events: Flow<T>,
     key1: Any? = null,
     key2: Any? = null,
@@ -25,7 +25,6 @@ fun <T>ObserveAsEvents(
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
             withContext(Dispatchers.Main.immediate) {
                 events.collect(onEvent)
-                }
             }
         }
     }
