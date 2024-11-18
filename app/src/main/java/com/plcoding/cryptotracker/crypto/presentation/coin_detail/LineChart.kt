@@ -29,6 +29,7 @@ import com.plcoding.cryptotracker.crypto.domain.CoinPrice
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import kotlin.math.roundToInt
 import kotlin.random.Random
 
 @Composable
@@ -179,6 +180,35 @@ fun LineChart(
                         style.helperLineThicknessPx
                     }
                 )
+            }
+
+            if(selectedDataPointIndex == index) {
+                val valueLabel = ValueLabel(
+                    value = visibleDataPoints[index].y,
+                    unit = unit
+                )
+                val valueResult = measurer.measure(
+                    text = valueLabel.formatted(),
+                    style = textStyle.copy(
+                        color = style.selectedColor
+                    ),
+                    maxLines = 1
+                )
+                val textPositionX = if(selectedDataPointIndex == visibleDataPointsIndices.last) {
+                    x - valueResult.size.width
+                } else {
+                    x - valueResult.size.width / 2f
+                } + result.size.width / 2f
+                val isTextInVisibleRange = (size.width - textPositionX).roundToInt() in 0..size.width.roundToInt()
+                if(isTextInVisibleRange) {
+                    drawText(
+                        textLayoutResult = valueResult,
+                        topLeft = Offset(
+                            x = textPositionX,
+                            y = viewPortTopY - valueResult.size.height - 10f
+                        )
+                    )
+                }
             }
         }
 
