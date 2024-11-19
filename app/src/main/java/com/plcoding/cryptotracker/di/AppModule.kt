@@ -1,4 +1,4 @@
-package com.plcoding.cryptotracker.crypto.di
+package com.plcoding.cryptotracker.di
 
 import com.plcoding.cryptotracker.core.data.networking.HttpClientFactory
 import com.plcoding.cryptotracker.crypto.data.networking.RemoteCoinDataSource
